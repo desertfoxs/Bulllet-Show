@@ -3,7 +3,20 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - pistol
+  - machinegun
+  - default
+  - shotgun
+  - bazooka
+  - Enemy
+  - muro
+  - BulletsEnemy
+  - BuDefault
+  - BuMachine
+  - BuPistol
+  - BuShotgun
+  - BuBazooka
   layers:
   - Default
   - TransparentFX
@@ -13,7 +26,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Enemy
   - 
   - 
   - 
