@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 265579681490137102}
   m_Layer: 0
   m_Name: T4 Bazooka Bullet_60x13_0
-  m_TagString: BuBazooka
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,18 +99,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.6392746, y: 0.0000019073486}
+  m_Offset: {x: 1.7790756, y: -0.049024582}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10, y: 8.666667}
+    oldSize: {x: 15, y: 13}
     newSize: {x: 10, y: 8.666667}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8.721451, y: 4.166176}
+  m_Size: {x: 11.001053, y: 6.3232155}
   m_EdgeRadius: 0
 --- !u!50 &8851253066043095577
 Rigidbody2D:
@@ -146,11 +146,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6000
+  player: {fileID: 0}
   defaultGun: 0
   pistol: 0
   machineGun: 0
   shotGun: 0
   Bazooka: 1
+  tiempo: 4
+  explocion: {fileID: 2353932657165550671, guid: 3f204ecc595ce3a4b9c35e472ac1f2ed,
+    type: 3}
 --- !u!95 &265579681490137102
 Animator:
   serializedVersion: 3

@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Vida : MonoBehaviour
 {
-
     public Sprite[] vida;
 
     void Start()
@@ -15,12 +14,19 @@ public class Vida : MonoBehaviour
 
     
     void Update()
-    {
-        
-    }
+    {}
 
     public void CambioVida (int pos)
     {
-        this.GetComponent<Image>().sprite = vida[pos];
+        
+        if(pos <= 0)
+        {
+            this.GetComponent<Image>().sprite = vida[0];
+
+        }
+        else
+        {
+            this.GetComponent<Image>().sprite = vida[pos];
+        }
     }
 }

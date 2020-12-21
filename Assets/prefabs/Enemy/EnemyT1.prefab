@@ -128,7 +128,9 @@ MonoBehaviour:
   ContArma: {fileID: 5282855701773555789}
   shotpos: {fileID: 5282855700486906930}
   player: {fileID: 0}
-  pistolBullet: {fileID: 6146595804680905062, guid: a8197990bde693f4faacd62870ee7432,
+  pistolBullet: {fileID: 7678671531699396760, guid: a8197990bde693f4faacd62870ee7432,
+    type: 3}
+  SonidoShoot: {fileID: 2391574670333720977, guid: f8190fc51a6ee8349b83617193e843db,
     type: 3}
 --- !u!1 &5282855701324126751
 GameObject:
@@ -229,14 +231,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76a9d31942db95941a979830eebd0d69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visionRadius: 150
-  attackRadius: 75
+  visionRadius: 400
+  attackRadius: 105
   speed: 50
   attackSpeed: 2
   t1Gun: {fileID: 5282855700523803750}
   maxHp: 3
-  hp: 3
   pistol: {fileID: 6822152511385878692, guid: a8998de918ad1cd4389ea3ed00e5052d, type: 3}
+  dropeoFijo: 0
+  tornillo: {fileID: 3169564310199112594, guid: 90eb8a96d503c9d448ee84432e4390c9,
+    type: 3}
+  puntos: 75
+  gameControler: {fileID: 0}
+  explocionMuerte: {fileID: 9167225746329570721, guid: 99e81bd8517f6e04aba3c9997fb2a25f,
+    type: 3}
+  SonidoEnemy:
+  - {fileID: 7538424558530803751, guid: ef1edc65b3f9d0745a2ad3ff246f69cf, type: 3}
+  - {fileID: 6162679792437158704, guid: bdd6cad2e7388474098b4f4a182cfbef, type: 3}
 --- !u!95 &5282855701324126744
 Animator:
   serializedVersion: 3

@@ -89,7 +89,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7517949821296715124}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -118.72638, y: -0.99176025, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -227,19 +227,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d402926d0fc6d44e94b15fed321c6f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visionRadius: 150
-  attackRadius: 75
+  visionRadius: 400
+  attackRadius: 130
   speed: 20
   attackSpeed: 2.3
-  bazookaBullet: {fileID: 6182160414221578551, guid: bf3eb0efd46db354dace759ca16f24a3,
+  bazookaBullet: {fileID: 3904156510425667353, guid: bf3eb0efd46db354dace759ca16f24a3,
     type: 3}
   shotpos1: {fileID: 7517949821880748573}
   shotpos2: {fileID: 7517949820094242602}
   maxHp: 5
   BazookaGun: {fileID: 5189081433845036113, guid: 6af330741fc68b04ba086b3695d42130,
     type: 3}
+  dropeoFijo: 1
+  tornillo: {fileID: 3169564310199112594, guid: 90eb8a96d503c9d448ee84432e4390c9,
+    type: 3}
   contPost1: {fileID: 7517949821302011584}
   contPost2: {fileID: 7517949820000201675}
+  puntos: 200
+  gameControler: {fileID: 0}
+  explocionMuerte: {fileID: 716888309557014042, guid: 8e4ff29d9b1964743a70340200180e93,
+    type: 3}
+  SonidoEnemy:
+  - {fileID: 1801437282998749128, guid: 05fe930ecc9565c4695b4d36d7e5995b, type: 3}
+  - {fileID: 6162679792437158704, guid: bdd6cad2e7388474098b4f4a182cfbef, type: 3}
+  - {fileID: 450996126781615517, guid: e9e02cfa5d2e53d43b7a9b5e0f782dec, type: 3}
 --- !u!1 &7517949821302011585
 GameObject:
   m_ObjectHideFlags: 0

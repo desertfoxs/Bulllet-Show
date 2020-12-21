@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-   
+
     public Transform mira;
     public Transform ContArma;
 
     public Transform shotpos;
 
     public Player player;
-    
+
     public GameObject defaultBullet;
     public GameObject pistolBullet;
     public GameObject shotgunBullet;
@@ -23,20 +23,18 @@ public class Gun : MonoBehaviour
     private bool disparo = true;
 
     public int cantidadBalas;
-    public float separacion;
-    public float limiteY;
-
-    private Vector3 ultimaIzq;
-    private Vector3 ultimaDer;
-
+ 
     public float retroceso = 10000f;
+
+    //sonido
+    public GameObject[] SonidoGun;
 
     void Start()
     {
 
     }
 
-    
+
     void Update()
     {
         DetectarMause();
@@ -63,12 +61,12 @@ public class Gun : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             indice = player.IndiceDelArreglo();
-                      
-            Disparo(); 
+
+            Disparo();
         }
 
 
-        
+
 
     }
 
@@ -78,23 +76,23 @@ public class Gun : MonoBehaviour
         if (disparo && indice == 0)
         {
             Instantiate(defaultBullet, shotpos.transform.position, Quaternion.identity);
-           
+            Instantiate(SonidoGun[0], shotpos.transform.position, Quaternion.identity);
             StartCoroutine(EnableMovementAfter(1.3f));
-            
+
         }
 
         if (disparo && indice == 1)
         {
             Instantiate(pistolBullet, shotpos.transform.position, Quaternion.identity);
-
+            Instantiate(SonidoGun[1], shotpos.transform.position, Quaternion.identity);
             StartCoroutine(EnableMovementAfter(1f));
 
         }
 
         if (disparo && indice == 2)
-        {           
+        {
             ShotGun();
-            
+            Instantiate(SonidoGun[2], shotpos.transform.position, Quaternion.identity);
             StartCoroutine(EnableMovementAfter(1.5f));
 
         }
@@ -102,7 +100,7 @@ public class Gun : MonoBehaviour
         if (disparo && indice == 3)
         {
             Instantiate(machinegunBullet, shotpos.transform.position, transform.rotation);
-
+            Instantiate(SonidoGun[3], shotpos.transform.position, Quaternion.identity);
             StartCoroutine(EnableMovementAfter(0.2f));
 
         }
@@ -110,7 +108,8 @@ public class Gun : MonoBehaviour
         if (disparo && indice == 4)
         {
             player.Retroceso(retroceso);
-            Instantiate(bazookaBullet, shotpos.transform.position, transform.rotation);                
+            Instantiate(bazookaBullet, shotpos.transform.position, transform.rotation);
+            Instantiate(SonidoGun[4], shotpos.transform.position, Quaternion.identity);
             StartCoroutine(EnableMovementAfter(2.3f));
 
         }
@@ -134,6 +133,18 @@ public class Gun : MonoBehaviour
             ));
     }
 
+    public void ShotGun()
+    {
+
+        for (int i = 0; i < cantidadBalas; i++)
+        {
+
+            Instantiate(shotgunBullet, shotpos.transform.position, transform.rotation);
+
+        }
+
+    }
+
     //corrutina
     IEnumerator EnableMovementAfter(float seconds)
     {
@@ -142,42 +153,6 @@ public class Gun : MonoBehaviour
         disparo = true;
     }
 
-    public void ShotGun()
-    {
-        Vector3 ultimaIzq = shotpos.transform.position + Vector3.left * separacion;
-        Vector3 ultimaDer = shotpos.transform.position + Vector3.left * separacion;
-
-        for (int i = 0; i < cantidadBalas; i++)
-        {
-            float dispercionY = Random.Range(0, limiteY);
-            float dispercionH;
-
-            if (i % 2 == 0)
-            {
-                 dispercionH = ultimaIzq.x;
-                ultimaIzq = ultimaIzq + Vector3.left * separacion;
-            }
-            else
-            {
-                 dispercionH = ultimaDer.x;
-                ultimaDer = ultimaDer + Vector3.left * separacion;
-            }
-
-            
-
-            Vector3 offset = new Vector3(dispercionH, shotpos.transform.position.y, dispercionY);
-
-            Vector3 spawnPos = shotpos.transform.position + offset;
-
-            Instantiate(shotgunBullet, spawnPos, transform.rotation);
-        }
-
-        
-        
-
-    }
-
 
    
-  
 }

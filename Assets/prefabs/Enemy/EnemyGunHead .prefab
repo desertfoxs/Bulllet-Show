@@ -226,14 +226,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cf16224b56fbff4796e2ad5608749ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visionRadius: 150
-  attackRadius: 75
+  visionRadius: 400
+  attackRadius: 130
   speed: 50
   attackSpeed: 1
-  MachineBullet: {fileID: 7413794976437263160, guid: 77629e813bd0cf6428c8ddf66c321bb7,
+  MachineBullet: {fileID: 6635901852403321105, guid: 77629e813bd0cf6428c8ddf66c321bb7,
     type: 3}
   shotpos: {fileID: 7715545685715555980}
   maxHp: 3
   MachineGun: {fileID: 7265389870774396764, guid: 6b3b46ad36da56347a489ad01eb4e24c,
     type: 3}
+  dropeoFijo: 0
+  tornillo: {fileID: 3169564310199112594, guid: 90eb8a96d503c9d448ee84432e4390c9,
+    type: 3}
   contPost: {fileID: 7715545687018299734}
+  puntos: 100
+  gameControler: {fileID: 0}
+  explocionMuerte: {fileID: 9167225746329570721, guid: 99e81bd8517f6e04aba3c9997fb2a25f,
+    type: 3}
+  SonidoEnemy:
+  - {fileID: 7538424558530803751, guid: ef1edc65b3f9d0745a2ad3ff246f69cf, type: 3}
+  - {fileID: 6162679792437158704, guid: bdd6cad2e7388474098b4f4a182cfbef, type: 3}
+  - {fileID: 2391574670333720977, guid: f8190fc51a6ee8349b83617193e843db, type: 3}

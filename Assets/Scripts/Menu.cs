@@ -5,15 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-    
+    public GameObject SonidoClick;
+
     public void Jugar()
     {
+        Instantiate(SonidoClick, transform.position, Quaternion.identity);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void Salir()
     {
+        Instantiate(SonidoClick, transform.position, Quaternion.identity);
         Application.Quit();
-        Debug.Log("salir");
+        
     }
 }

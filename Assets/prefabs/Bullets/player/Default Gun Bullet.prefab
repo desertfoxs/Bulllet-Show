@@ -97,9 +97,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.021728516, y: -0.08172417}
   serializedVersion: 2
-  m_Radius: 2.4111023
+  m_Radius: 3.5509548
 --- !u!50 &2835129559323766877
 Rigidbody2D:
   serializedVersion: 4
@@ -134,8 +134,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8000
+  player: {fileID: 0}
   defaultGun: 1
   pistol: 0
   machineGun: 0
   shotGun: 0
   Bazooka: 0
+  tiempo: 4
+  explocion: {fileID: 0}

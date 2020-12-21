@@ -17,6 +17,13 @@ TagManager:
   - BuPistol
   - BuShotgun
   - BuBazooka
+  - BuBazookaEnemy
+  - ItemHealth
+  - ItemHealth1
+  - Explocion
+  - Tornillo
+  - Portal
+  - Gun
   layers:
   - Default
   - TransparentFX

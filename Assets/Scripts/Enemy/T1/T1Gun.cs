@@ -9,6 +9,8 @@ public class T1Gun : MonoBehaviour
     public Transform player;
     public GameObject pistolBullet;
 
+    //sonido
+    public GameObject SonidoShoot;
 
     void Start()
     {
@@ -49,6 +51,6 @@ public class T1Gun : MonoBehaviour
     public void Disparar()
     {
         Instantiate(pistolBullet, shotpos.transform.position, Quaternion.identity);
-
+        Instantiate(SonidoShoot, transform.position, Quaternion.identity);
     }
 }

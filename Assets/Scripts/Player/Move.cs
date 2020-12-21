@@ -11,155 +11,208 @@ public class Move : MonoBehaviour
     Rigidbody2D rb2d;
     Vector2 mov;
 
-    private float speed = 4000;
+    public float speed = 10000;
     private float dashTimeCounter;
     private Vector2 directionFromMouse;
-    private bool dashing;
+    private bool dashing = false;
     private bool dashing2 = false;
 
-    public Transform mira; 
+    public Transform mira;
+
+    private bool muerto;
+
+    //para el sonido
+    public Player player;
+
+    //para el dash
+    private bool tiempo = true;
+    private bool SonidoDash = false;
+    private bool movimiento = false;
 
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        dashing = false;
         dashTimeCounter = starDashTime; 
+
     }
 
     void Update()
     {
         //movimiento del personaje
+        
         if (!Input.GetKey("a") && !Input.GetKey("d") && !Input.GetKey("s") && !Input.GetKey("w"))
         {
             gameObject.GetComponent<Animator>().SetBool("Move", false);
+            movimiento = false;
         }
 
-        if (Input.GetKey("a"))
+        if (!muerto)
         {
-            rb2d.AddForce(new Vector2(-speed * Time.deltaTime, 0));
-            gameObject.GetComponent<Animator>().SetBool("Move", true);
-            gameObject.GetComponent<SpriteRenderer>().flipX = true;
 
-            //dash en movimiento
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetKey("a"))
             {
-                StartCoroutine(EnableMovementAfter(0.35f));
+                rb2d.AddForce(new Vector2(-speed * Time.deltaTime, 0));
+                gameObject.GetComponent<Animator>().SetBool("Move", true);
+                gameObject.GetComponent<SpriteRenderer>().flipX = true;
+                movimiento = true;
 
-                if (dashing2)
-                {
-                    rb2d.AddForce(new Vector2(-35000 * Time.deltaTime, 0));
-                    
-                }
+               
             }
 
-        }
-
-        if (Input.GetKey("d"))
-        {
-            rb2d.AddForce(new Vector2(speed * Time.deltaTime, 0));
-            gameObject.GetComponent<Animator>().SetBool("Move", true);
-            gameObject.GetComponent<SpriteRenderer>().flipX = false;
-
-            //dash en movimiento
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetKey("d"))
             {
-                StartCoroutine(EnableMovementAfter(0.35f));
+                rb2d.AddForce(new Vector2(speed * Time.deltaTime, 0));
+                gameObject.GetComponent<Animator>().SetBool("Move", true);
+                gameObject.GetComponent<SpriteRenderer>().flipX = false;
+                movimiento = true;
 
-                if (dashing2)
+                
+            }
+
+            if (Input.GetKey("w"))
+            {
+                rb2d.AddForce(new Vector2(0, speed * Time.deltaTime));
+                gameObject.GetComponent<Animator>().SetBool("Move", true);
+                movimiento = true;
+                
+            }
+
+            if (Input.GetKey("s"))
+            {
+                rb2d.AddForce(new Vector2(0, -speed * Time.deltaTime));
+                gameObject.GetComponent<Animator>().SetBool("Move", true);
+                movimiento = true;
+                
+            }
+
+
+            //rotacion del personaje
+            if (mira.transform.position.x < transform.position.x)
+            {
+                gameObject.GetComponent<SpriteRenderer>().flipX = true;
+            }
+            else
+            {
+                gameObject.GetComponent<SpriteRenderer>().flipX = false;
+            }
+
+
+            //el uso del dash
+            if (Input.GetMouseButtonDown(1) && tiempo)
+            {
+
+                if (movimiento)
                 {
-                    rb2d.AddForce(new Vector2(35000 * Time.deltaTime, 0));
+                    if (Input.GetKey("a"))
+                    {
+                                                
+                            SonidoDash = true;
+                            StartCoroutine(EnableMovementAfter(0.35f));
+
+                            if (dashing2)
+                            {
+                                rb2d.AddForce(new Vector2(-80000 * Time.deltaTime, 0));
+                                player.SonidoDash();
+                            }
+                        
+
+                    }
+
+                    if (Input.GetKey("d"))
+                    {
+                                               
+                            SonidoDash = true;
+                            StartCoroutine(EnableMovementAfter(0.35f));
+
+                            if (dashing2)
+                            {
+                                rb2d.AddForce(new Vector2(80000 * Time.deltaTime, 0));
+                                player.SonidoDash();
+                            }
+                        
+                    }
+
+                    if (Input.GetKey("w"))
+                    {
+                                                
+                            SonidoDash = true;
+                            StartCoroutine(EnableMovementAfter(0.35f));
+
+                            if (dashing2)
+                            {
+                                rb2d.AddForce(new Vector2(0, 80000 * Time.deltaTime));
+                                player.SonidoDash();
+                            }
+                        
+                    }
+
+                    if (Input.GetKey("s"))
+                    {
+                        
+                            SonidoDash = true;
+                            StartCoroutine(EnableMovementAfter(0.35f));
+
+                            if (dashing2)
+                            {
+                                rb2d.AddForce(new Vector2(0, -80000 * Time.deltaTime));
+                                player.SonidoDash();
+                            }
+                        
+                    }
+
 
                 }
-            }
-        }
-
-        if (Input.GetKey("w"))
-        {
-            rb2d.AddForce(new Vector2(0, speed * Time.deltaTime));
-            gameObject.GetComponent<Animator>().SetBool("Move", true);
-           
-            //dash en movimiento
-            if (Input.GetMouseButtonDown(1))
-            {
-                StartCoroutine(EnableMovementAfter(0.35f));
-
-                if (dashing2)
+                else
                 {
-                    rb2d.AddForce(new Vector2(0, 35000 * Time.deltaTime));
-
-                }
-            }
-        }
-        
-        if (Input.GetKey("s"))
-        {
-            rb2d.AddForce(new Vector2(0, -speed * Time.deltaTime));
-            gameObject.GetComponent<Animator>().SetBool("Move", true);
-
-            //dash en movimiento
-            if (Input.GetMouseButtonDown(1))
-            {
-                StartCoroutine(EnableMovementAfter(0.35f));
-
-                if (dashing2)
-                {
-                    rb2d.AddForce(new Vector2(0, -35000 * Time.deltaTime));
-
-                }
-            }
-        }
-
-
-        //rotacion del personaje
-        if (mira.transform.position.x < transform.position.x)
-        {
-            gameObject.GetComponent<SpriteRenderer>().flipX = true;
-        }
-        else
-        {
-            gameObject.GetComponent<SpriteRenderer>().flipX = false;
-        }
-
-        //el uso del dash
-        if (!Input.GetKey("a") && !Input.GetKey("d") && !Input.GetKey("s") && !Input.GetKey("w"))
-        {
-
-            if (!dashing)
-            {
-                if (Input.GetMouseButtonDown(1))
-                {
-
-                    PrepareDash();
-                    gameObject.GetComponent<Animator>().SetBool("dash", true);
-                    
-
+                    if (tiempo)
+                    {
+                        SonidoDash = true;
+                        PrepareDash();
+                        gameObject.GetComponent<Animator>().SetBool("dash", true);
+                        player.SonidoDash();
+                    }
                 }
 
             }
             else
             {
-                if (dashTimeCounter <= 0f)
-                {
-                    dashing = false;
-                    dashTimeCounter = starDashTime;
-                    gameObject.GetComponent<Animator>().SetBool("dash", false);
-                }
-                else
-                {
-                    dashTimeCounter -= Time.deltaTime;
-                }
 
+                                           
+                 if (dashTimeCounter <= 0f)
+                 {
+                     dashing = false;
+                     dashTimeCounter = starDashTime;
+                     gameObject.GetComponent<Animator>().SetBool("dash", false);
+                 }
+                 else
+                 {
+                     dashTimeCounter -= Time.deltaTime;
+                 }
+
+
+                
 
             }
 
         }
-       
-
 
 
         //detectar el mause
         DetectarMause();
 
+    }
+
+    public bool EstadoDash2()
+    {
+        
+        return (dashing2);
+        
+    }
+    public bool EstadoDash()
+    {
+        
+        return (dashing);
+        
     }
 
     public void DetectarMause()
@@ -176,8 +229,15 @@ public class Move : MonoBehaviour
         if (dashing)
         {
             rb2d.velocity = directionFromMouse * playerDashSpeed * Time.fixedDeltaTime;
+            StartCoroutine(TiempoDash(2.5f));
         }
 
+    }
+
+    //detecta que esta muerto
+    public void CambioMuerto()
+    {
+        muerto = true;
     }
 
     void PrepareDash()
@@ -199,8 +259,27 @@ public class Move : MonoBehaviour
     {
         dashing2 = true;
         gameObject.GetComponent<Animator>().SetBool("dash", true);
+
         yield return new WaitForSeconds(seconds);
+
         gameObject.GetComponent<Animator>().SetBool("dash", false);
+        StartCoroutine(TiempoDash(2.5f));
+        dashing2 = false;
+    }
+
+    IEnumerator TiempoDash(float seconds)
+    {
+        tiempo = false;
+        
+        yield return new WaitForSeconds(seconds);
+        
+        tiempo = true;
+
+        if (SonidoDash)
+        {
+            player.SonidoDashListo();
+            SonidoDash = false;
+        }
     }
 
 }

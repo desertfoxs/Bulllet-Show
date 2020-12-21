@@ -118,18 +118,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.009887695, y: 0.031469345}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8, y: 3.3333333}
+    oldSize: {x: 12, y: 5}
     newSize: {x: 8, y: 3.3333333}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 3.3333333}
+  m_Size: {x: 11.998535, y: 5.010868}
   m_EdgeRadius: 0
 --- !u!114 &7040223589538271243
 MonoBehaviour:
@@ -144,8 +144,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8000
+  player: {fileID: 0}
   defaultGun: 0
   pistol: 0
   machineGun: 1
   shotGun: 0
   Bazooka: 0
+  tiempo: 4
+  explocion: {fileID: 0}
